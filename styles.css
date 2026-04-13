@@ -424,9 +424,9 @@ p { color: rgba(240,237,232,0.72); max-width: 56ch; }
 /* Owl background illustration */
 .hero-owl-bg {
   position: absolute;
-  right: -4%;
-  bottom: -2%;
-  width: clamp(300px, 38vw, 580px);
+  right: -2%;
+  bottom: -4%;
+  width: clamp(420px, 54vw, 820px);
   pointer-events: none;
   z-index: 1;
   user-select: none;
@@ -434,10 +434,20 @@ p { color: rgba(240,237,232,0.72); max-width: 56ch; }
 .hero-owl-bg img {
   width: 100%;
   height: auto;
-  opacity: 0.42;
+  opacity: 0.52;
   filter: saturate(0.7) brightness(0.78) sepia(0.35);
 }
-@media (max-width: 480px) { .hero-owl-bg { display: none; } }
+
+/* Mobile: owl peeks ~50% from right edge */
+@media (max-width: 480px) {
+  .hero-owl-bg {
+    display: block;
+    width: clamp(260px, 80vw, 380px);
+    right: -42%;
+    bottom: -2%;
+    opacity: 0.85;
+  }
+}
 
 .scroll-hint {
   position: absolute;
