@@ -235,15 +235,27 @@ p { color: rgba(240,237,232,0.72); max-width: 56ch; }
 }
 
 .nav-logo {
+  color: var(--text);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.65rem;
+  line-height: 1;
+  text-decoration: none;
+}
+.nav-logo-badge {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+.nav-logo-text {
   font-family: 'PlanetX', var(--font-head);
   font-weight: normal;
   font-size: 1.55rem;
   letter-spacing: 0.08em;
-  color: var(--text);
-  flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  line-height: 1;
   gap: 0.2rem;
 }
 .nav-logo-sub {
@@ -500,10 +512,27 @@ p { color: rgba(240,237,232,0.72); max-width: 56ch; }
 }
 .visual-card:hover { transform: rotate(0deg) translateY(-6px) !important; }
 
+.about-logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+.about-logo {
+  width: 260px;
+  height: auto;
+  display: block;
+}
+
 .visual-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.stat-block {
+  align-items: center;
+  text-align: center;
 }
 
 .stat-block {
@@ -514,14 +543,14 @@ p { color: rgba(240,237,232,0.72); max-width: 56ch; }
 
 .stat-num {
   font-family: var(--font-head);
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 800;
   line-height: 1;
   color: var(--text);
 }
 
 .stat-label {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--muted);
@@ -862,6 +891,21 @@ footer {
   border-bottom: 1px solid var(--border);
 }
 
+.footer-logo-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.65rem;
+}
+.footer-logo-badge {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+.footer-logo-text {
+  display: flex;
+  flex-direction: column;
+}
 .footer-logo {
   font-family: 'PlanetX', var(--font-head);
   font-size: 1.5rem;
@@ -942,6 +986,6 @@ footer {
 }
 
 @media (max-width: 400px) {
-  .visual-inner { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .stat-num { font-size: 2.2rem; }
+  .visual-inner { gap: 1.2rem; }
+  .stat-num { font-size: 1.6rem; }
 }
