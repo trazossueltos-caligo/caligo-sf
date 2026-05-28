@@ -65,60 +65,7 @@ if (tiltCard) {
   });
 }
 
-// ── Contact form — Formspree integration ──
-const form = document.getElementById('contactForm');
-if (form) {
-  const action = form.getAttribute('action');
-  const isConfigured = action && !action.includes('YOUR_FORM_ID');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('[type="submit"]');
-
-    // If Formspree not yet configured, fall back to mailto
-    if (!isConfigured) {
-      const name    = form.querySelector('#name').value;
-      const email   = form.querySelector('#email').value;
-      const project = form.querySelector('#project').value;
-      const message = form.querySelector('#message').value;
-      const body    = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nProject: ${project}\n\n${message}`
-      );
-      window.location.href = `mailto:caligo.sf@gmail.com?subject=Project Inquiry from ${encodeURIComponent(name)}&body=${body}`;
-      return;
-    }
-
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
-
-    try {
-      const res = await fetch(action, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form),
-      });
-
-      if (res.ok) {
-        btn.textContent = 'Message Sent!';
-        btn.style.background = '#2a9d5c';
-        form.reset();
-        setTimeout(() => {
-          btn.textContent = 'Send Message';
-          btn.style.background = '';
-          btn.disabled = false;
-        }, 4000);
-      } else {
-        throw new Error('Non-ok response');
-      }
-    } catch {
-      btn.textContent = 'Something went wrong — email us directly';
-      btn.disabled = false;
-      setTimeout(() => {
-        btn.textContent = 'Send Message';
-      }, 4000);
-    }
-  });
-}
+// ── Contact form — handled by Formspree Ajax (see index.html) ──
 
 // ── Smooth active nav link highlight on scroll ──
 const sections = document.querySelectorAll('section[id]');
