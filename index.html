@@ -326,20 +326,30 @@
           </div>
         </div>
         <div class="contact-form-wrap reveal">
-          <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div data-fs-success class="form-success" style="display:none">
+            <p>✅ Message sent! We'll be in touch soon.</p>
+          </div>
+          <div data-fs-error class="form-error-msg" style="display:none"></div>
+          <form class="contact-form" id="contactForm">
+            <!-- Honeypot spam trap -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+            <!-- SMS notifications via Google Fi email gateway -->
+            <input type="hidden" name="_cc" value="4156378604@msg.fi.google.com,5133482803@msg.fi.google.com" />
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name" required />
+                <input type="text" id="name" name="name" placeholder="Your name" required data-fs-field />
+                <span data-fs-error="name" class="field-error"></span>
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="your@email.com" required />
+                <input type="email" id="email" name="email" placeholder="your@email.com" required data-fs-field />
+                <span data-fs-error="email" class="field-error"></span>
               </div>
             </div>
             <div class="form-group">
               <label for="project">Project Type</label>
-              <select id="project" name="project">
+              <select id="project" name="project" data-fs-field>
                 <option value="">What are you looking for?</option>
                 <option value="mural-commercial">Mural — Commercial Space</option>
                 <option value="mural-residential">Mural — Residence</option>
@@ -353,9 +363,10 @@
             </div>
             <div class="form-group">
               <label for="message">Tell Us More</label>
-              <textarea id="message" name="message" rows="5" placeholder="Where's the wall? What's the vibe? Any size or timeline? No need to be formal." required></textarea>
+              <textarea id="message" name="message" rows="5" placeholder="Where's the wall? What's the vibe? Any size or timeline? No need to be formal." required data-fs-field></textarea>
+              <span data-fs-error="message" class="field-error"></span>
             </div>
-            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+            <button type="submit" class="btn btn-primary btn-full" data-fs-submit-btn>Send Message</button>
             <p class="form-note">Or just email us directly at <a href="mailto:caligo.sf@gmail.com">caligo.sf@gmail.com</a></p>
           </form>
         </div>
@@ -391,5 +402,10 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contactForm', formId: 'mjgzleee' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>

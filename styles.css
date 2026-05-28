@@ -859,6 +859,28 @@ select option { background: var(--bg-card); }
 
 textarea { resize: vertical; min-height: 130px; }
 
+.form-success {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--accent-2);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--accent-2);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.form-error-msg {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+.field-error {
+  color: #ff6b6b;
+  font-size: 0.78rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
 .form-note {
   text-align: center;
   font-size: 0.8rem;
